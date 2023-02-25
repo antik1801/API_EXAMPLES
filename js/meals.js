@@ -53,8 +53,23 @@ const loadMealDetails = idMeal =>{
 }
 
 const displayMealDetails = meal =>{
-    const modalTitle = document.getElementById('exampleModalLabel');
-    modalTitle.innerText = meal.strMeal;
+    console.log(meal);
+    document.getElementById('exampleModalLabel').innerText = meal.strMeal;
+    const mealDetailsBody = document.getElementById('mealDetailsBody');
+    mealDetailsBody.classList.add('row','row-col-sm-1','row-col-md-2','align-items-center')
+    mealDetailsBody.innerHTML=`
+    <div class="col">
+    <p>Price: <span class="fw-bold fs-2"> ${meal.idMeal} </span></p>
+    <p>Review: <span class="fw-bold fs-3">${meal.strCategory}</span> </p>
+    <p>Instructions: <span class="fw-bold fs-3">${meal.strMeasure3}</span></p>
+    <p>Star tags: <span class="fs-4">${meal.strTags}</span></p>
+    <p>Wight: <span class="fw-bold fs-3">${meal.strMeasure1}</span></p>
+    </div>
+    <div class="col p-2 ">
+    <img class="img-fluid" src="${meal.strMealThumb}">
+    </div>
+    `
+
 }
 
 loadMeals('fish');
