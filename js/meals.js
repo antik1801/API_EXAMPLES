@@ -21,7 +21,7 @@ const displayMeals = meals =>{
         <div class="card-body">
           <h5 class="card-title">${meal.strMeal}</h5>
           <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-          <button onclick="loadMealDetails(${meal.idMeal})" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+          <button onclick="loadMealDetails2(${meal.idMeal})" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
           Details
 </button>
 
@@ -44,16 +44,33 @@ document.getElementById('search-input').addEventListener('keyup',(e)=>{
 })
 
 
-const loadMealDetails = idMeal =>{
-    const url = `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${idMeal}`
-    fetch(url)
-    .then(response => response.json())
-    .then(data => displayMealDetails(data.meals[0]))
+// const loadMealDetails = idMeal =>{
+//     const url = `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${idMeal}`
+//     fetch(url)
+//     .then(response => response.json())
+//     .then(data => displayMealDetails(data.meals[0]))
+//     .catch(error => {
+//         document.getElementById('mealDetailsBody').innerHTML=`${error}`
+//         console.log(error)
+//     })
+// }
 
+// async await example
+const loadMealDetails2 = async (idMeal) =>{
+    const url = `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${idMeal}`
+    try {
+        const response = await fetch(url);
+        const data = await response.json();
+        displayMealDetails(data.meals[0]);
+    } catch (error) {
+        document.getElementById('mealDetailsBody').innerHTML=`${error}`
+    }
 }
 
+
+
 const displayMealDetails = meal =>{
-    console.log(meal);
+    // console.log(meal);
     document.getElementById('exampleModalLabel').innerText = meal.strMeal;
     const mealDetailsBody = document.getElementById('mealDetailsBody');
     mealDetailsBody.classList.add('row','row-col-sm-1','row-col-md-2','align-items-center')

@@ -20,7 +20,7 @@ const displayMeals = meals => {
         <div class="card-body">
           <h5 class="card-title">${meal.strMeal}</h5>
           <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-          <button onclick="modalsDetailsBody(${meal.idMeal})" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+          <button onclick="modalsDetailsBody2(${meal.idMeal})" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
           Details
           </button>
         </div>
@@ -41,12 +41,26 @@ document.getElementById('search-input').addEventListener('keyup',(e)=>{
     loadData(e.target.value);
 })
 
-const modalsDetailsBody = mealId =>{
-  console.log(mealId);
+// const modalsDetailsBody = mealId =>{
+//   console.log(mealId);
+//   const url = `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${mealId}`
+//   fetch(url)
+//   .then(response => response.json())
+//   .then(data => displayModalBody(data.meals[0]))
+//   .catch(error => {
+//     console.log(error);
+//   })
+// }
+
+const modalsDetailsBody2 = async (mealId) =>{
   const url = `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${mealId}`
-  fetch(url)
-  .then(response => response.json())
-  .then(data => displayModalBody(data.meals[0]))
+  try {
+    const response = await fetch(url);
+    const data = await response.json();
+    displayModalBody(data.meals[0])
+  } catch (error) {
+    document.getElementById('modals-body').innerText= error
+  }
 }
 
 const displayModalBody = meal =>{
