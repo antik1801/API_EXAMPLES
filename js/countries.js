@@ -19,7 +19,11 @@ const displayCountries = countries =>{
         </div>
         `
         countriesContainer.appendChild(countryDiv);
+<<<<<<< HEAD
         // console.log(country.cca2);
+=======
+        console.log('fish');
+>>>>>>> b0c3edf791088bb07cf4074f0a79041092df9d88
     });
 }
 
