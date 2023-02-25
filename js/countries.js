@@ -13,6 +13,7 @@ const displayCountries = countries =>{
         <h3>Name: </h3> 
         `
         countriesContainer.appendChild(countryDiv);
+        console.log('fish');
     });
 }
 loadCountries();
