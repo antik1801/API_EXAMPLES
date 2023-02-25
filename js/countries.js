@@ -18,12 +18,7 @@ const displayCountries = countries =>{
         <button class="btn btn-success" onclick="displayCountryDetails('${country.cca2}')">Details</button>
         </div>
         `
-        countriesContainer.appendChild(countryDiv);
-<<<<<<< HEAD
-        // console.log(country.cca2);
-=======
-        console.log('fish');
->>>>>>> b0c3edf791088bb07cf4074f0a79041092df9d88
+        countriesContainer.appendChild(countryDiv)
     });
 }
 
@@ -35,7 +30,7 @@ const displayCountryDetails =code=>{
     // console.log(apiCode)
 }
 const showCountryDetails = country =>{
-    console.log(country);
+    // console.log(country);
     const flag = country.flags.png;
     const name = country.name.common;
     const detailContainer = document.getElementById('country-details')
